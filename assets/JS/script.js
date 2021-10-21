@@ -28,4 +28,4 @@ if (travelerAge > 18 && travelerAge < 65) {
 
 console.log(finalPrice);
 
-document.getElementById('Document').innerHTML = finalPrice;
+document.getElementById('Document').innerHTML = 'Your Ticket cost: ' + finalPrice;
