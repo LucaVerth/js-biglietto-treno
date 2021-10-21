@@ -13,21 +13,17 @@ const travelKm = prompt('Please enter how many km to ride for...');
 const travelerAge = prompt('Please enter your age...');
 const travelFee = 0.21
 
-
 console.log(travelKm);
 console.log(travelerAge);
 
 var travelPrice = travelKm * travelFee;
-
-console.log(new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(travelPrice));
-
 var discount20 = parseFloat((travelPrice / 100)*20).toFixed(2);
 var discount40 = parseFloat((travelPrice / 100)*40).toFixed(2);
 
 if (travelerAge > 18 && travelerAge < 65) {
-  console.log(travelPrice)  
+  console.log(new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR'}).format(parseFloat(travelPrice.toFixed(2)))); 
 } else if (travelerAge < 18) {
-  console.log(parseFloat(travelPrice - discount20).toFixed(2))
+  console.log(new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR'}).format(parseFloat(travelPrice - discount20).toFixed(2)));
 } else {
-  console.log(parseFloat(travelPrice - discount40).toFixed(2))
+  console.log(new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR'}).format(parseFloat(travelPrice - discount40).toFixed(2)));
 };
