@@ -11,21 +11,28 @@
 
 const travelKm = prompt('Please enter how many km to ride for...');
 const travelerAge = prompt('Please enter your age...');
-const travelFee = 0.21
+const travelFee = 0.21;
 
-var travelPrice = travelKm * travelFee;
-var discount20 = parseFloat((travelPrice / 100)*20).toFixed(2);
-var discount40 = parseFloat((travelPrice / 100)*40).toFixed(2);
+document.getElementById('kilometers').innerHTML = 'Number of km: ' + travelKm;
+document.getElementById('age').innerHTML = 'Age: ' + travelerAge;
+
+let travelPrice = travelKm * travelFee;
+let normalPrice = 'Non eligible for discount!'
+let discount20 = parseFloat((travelPrice / 100)*20).toFixed(2);
+let discount40 = parseFloat((travelPrice / 100)*40).toFixed(2);
 
 let finalPrice = ''
 if (travelerAge > 18 && travelerAge < 65) {
-  finalPrice = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR'}).format(parseFloat(travelPrice.toFixed(2))); 
+  finalPrice = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR'}).format(parseFloat(travelPrice.toFixed(2)));
+  document.getElementById('discount').innerHTML = normalPrice; 
 } else if (travelerAge < 18) {
   finalPrice = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR'}).format(parseFloat(travelPrice - discount20).toFixed(2));
+  document.getElementById('discount').innerHTML = discount20;
 } else {
   finalPrice = new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR'}).format(parseFloat(travelPrice - discount40).toFixed(2));
+  document.getElementById('discount').innerHTML = discount40;
 };
 
 console.log(finalPrice);
 
-document.getElementById('Document').innerHTML = 'Your Ticket cost: ' + finalPrice;
+document.getElementById('Document').innerHTML = 'Your Ticket cost is: ' + finalPrice; 
